@@ -13,4 +13,7 @@ $(document).ready(function () {
       header.removeClass("arrow-show");
     }
   });
+  $('#check').on('click', function(){
+    $('.menu').toggleClass('menu-show')
+  })
 })

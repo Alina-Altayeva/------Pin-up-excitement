@@ -7,6 +7,7 @@ body {
 }
 
 header {
+  position: relative;
   background-color: rgb(242, 179, 179);
   color: white;
 
@@ -25,7 +26,8 @@ header {
     li {
       list-style-type: none;
       padding: 10px;
-      width: 65px;
+      width: 70px;
+      text-align: center;
 
       a {
         text-decoration: none;
@@ -58,6 +60,53 @@ header {
       outline-color: rgb(242, 179, 179);
     }
   }
+
+  label {
+    display: none;
+    flex-direction: column;
+    width: 30px;
+    cursor: pointer;
+  }
+
+  label span {
+    background: #fff;
+    border-radius: 10px;
+    height: 3px;
+    margin: 2px 0;
+    transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+
+  span:nth-of-type(1) {
+    width: 50%;
+  }
+
+  span:nth-of-type(2) {
+    width: 100%;
+  }
+
+  span:nth-of-type(3) {
+    width: 75%;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  input[type="checkbox"]:checked~span:nth-of-type(1) {
+    transform-origin: bottom;
+    transform: rotatez(45deg) translate(16px, -1px)
+  }
+
+  input[type="checkbox"]:checked~span:nth-of-type(2) {
+    transform-origin: top;
+    transform: rotatez(-45deg)
+  }
+
+  input[type="checkbox"]:checked~span:nth-of-type(3) {
+    transform-origin: bottom;
+    width: 50%;
+    transform: translate(2px, -13px) rotatez(45deg);
+  }
 }
 
 .arrow-top {
@@ -67,6 +116,7 @@ header {
   border-radius: 50%;
   opacity: 0;
   background-color: rgb(242, 179, 179);
+  z-index: 100000;
 
   svg {
     width: 45px;
@@ -147,13 +197,16 @@ footer {
   color: white;
   padding: 100px 0;
   margin-top: 100px;
+
   ul {
     margin: 0;
     padding: 0;
     padding-right: 120px;
+
     li {
       list-style-type: none;
       padding-bottom: 16px;
+
       a {
         color: white;
         text-decoration: none;
@@ -169,6 +222,31 @@ footer {
           color: rgb(242, 179, 179);
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width:768px) {
+  header {
+    label {
+      display: flex;
+    }
+    .menu {
+      display: none;
+    }
+    .menu-show {
+      position: absolute;
+      top: 55px;
+      right: 0;
+      width: 240px;
+      display: block;
+      background-color: rgb(242, 179, 179);
+      color: #fff;
+      padding: 20px;
+      z-index: 100;
+    }
+    ul.menu-show {
+      padding-top: 70px;
     }
   }
 }
